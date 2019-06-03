@@ -36,4 +36,16 @@ class Clock {
 	Stop() {
 		clearInterval(this.timer);
 	}
+	GetM(type) {
+		if (type)
+			return 19 - this.timerM;
+		else
+			return this.timerM;
+	}
+	GetS(type) {
+		if (type)
+			return 60 - this.timerS;
+		else
+			return this.timerS;
+	}
 }

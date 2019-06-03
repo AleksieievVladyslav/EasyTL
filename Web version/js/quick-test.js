@@ -15,6 +15,34 @@ class Quick {
 		$('.quick').removeClass('active');
 		$('.main-menu').addClass('active');
 	}
+	GetAmericanResult() {
+		if (this.score == 20) return 'A+';
+		else if (this.score >= 18) return 'A';
+		else if (this.score >= 16) return 'B';
+		else if (this.score >= 14) return 'C';
+		else if (this.score >= 12) return 'D';
+		else if (this.score >= 9) return 'E';
+		else if (this.score >= 6) return 'F';
+		else return 'F-';
+ 	}
+ 	PrintAmereican() {
+ 		$('.q-american-result').append(
+ 			'<div class="circle big">\
+				<div class="circle small">\
+					<div class="stars">\
+						<span class="strips"></span>\
+						<span class="strips"></span>\
+						<span class="strips"></span>\
+						<span class="strips"></span>\
+						<span class="strips"></span>\
+						<span class="st"><i class="fas fa-star"></i><i class="fas fa-star"></i></span>\
+						<span class="st"><i class="fas fa-star"></i><i class="fas fa-star"></i></span>\
+						<span class="st"><i class="fas fa-star"></i><i class="fas fa-star"></i></span>\
+					</div>\
+					<span>' + this.GetAmericanResult() + '</span>\
+				</div>\
+ 			</div>');
+ 	}
 	End() {
 		// remove answers buttons
 		$('.q-a').off().removeClass('active').removeClass('passed');
@@ -33,7 +61,10 @@ class Quick {
 
 		// show Result
 		$('.q-result').show();
+		$('#q-state-value-time-minutes').html(this.quickClock.GetM(true));
+		$('#q-state-value-time-seconds').html(this.quickClock.GetS(true));
 		$('#q-state-value-result').html(this.score);
+ 		this.PrintAmereican();
 
 		// set Exit Button
 		$('.q-next span').html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')

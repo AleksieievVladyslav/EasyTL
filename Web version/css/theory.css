@@ -100,8 +100,13 @@
 	font-weight: 170;
 	font-style: italic;
 }
+.theory-topic {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
 .theory-topic > .wrapper {
 	padding-top: 30px;
+	overflow-y: visible;
 }
 .topic-title {
 	font-size: 2em;
@@ -148,9 +153,26 @@
 	position: relative;
 	width: 75%;
 	margin: auto;
-	padding: 10px 10px;
-	color: #0652DD;
+	padding: 5px 10px 5px 30px;
+	font-size: 0.9em;
+	color: #0632aD;
 	text-align: justify;
 	font-style: italic;
+	list-style: none;
 	font-weight: 400;
+}
+.topic-listitem::before {
+	background: #0652DD;
+	display: block;
+	content: '';
+	position: absolute;
+	left: 15px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	top: 13px;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
 }

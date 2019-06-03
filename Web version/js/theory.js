@@ -1,5 +1,6 @@
 class Theory {
 	constructor(theme) {
+		$('.theory-topic-ct').empty();
 		$('.theory-topic-ct').append(
 				'<h3 class="topic-title">' + THEORY[theme].theme + '</h3>'
 			);
@@ -12,7 +13,6 @@ class Theory {
 					}
 					res += '</ul>';
 					$('.theory-topic-ct').append(res);
-					console.log(res);
 				} else {
 					$('.theory-topic-ct').append(
 						'<' + THEORY[theme].elements[i].wrapper +

@@ -57,6 +57,11 @@ $(document).ready(function(){
 	$('.contact-us-but').click(() => {
 		$('.contact-us').fadeIn();
 	});
+
+	$('.topic').click(function(e) {
+		$('.theory').removeClass('active');
+		$('.theory-topic').addClass('active');
+	});
 	new Profile(userStatistic);
 	new Theory(0);
 });

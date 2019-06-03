@@ -26,6 +26,15 @@ class Menu {
 		let address = $(element).attr("href");
 		$(this.profileMenu[address]).addClass("active");
 	}
+	TheoryRedirect(target) {
+		if ($(target).hasClass('closed-topic')) {
+			return;
+		}
+		let index = $(target).index();
+		new Theory(index);
+		$('.theory').removeClass('active');
+		$('.theory-topic').addClass('active');
+	}
 	ProfileClearActive() {
 		$('.profile-state').removeClass("active");
 	}

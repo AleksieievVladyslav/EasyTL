@@ -93,6 +93,13 @@ class Quick {
 		this.qList = [];
 		for (let i = 0; i < 20; i++) this.qList.push(new Question(QUESTIONS[0]));
 	}
+	GenerateQListTheme(theme) {
+		this.qList = [];
+		for (let i = 0; i < QUESTIONS.length; i++) {
+			if (QUESTIONS[i].themeId == theme)
+				qList.push(new Question(QUESTIONS[i]));
+		}
+	}
 	__initQ() {
 		let question = this.qList[this.currentQ];
 
@@ -134,7 +141,15 @@ class Quick {
 				});
 		}
 	}
-	constructor() {
+	constructor(type, theme) {
+		if (type === true) {
+			this.currentQ = 0;
+			this.score = 0;
+			this.GenerateQListTheme(theme);
+			$('.q-prev').show();
+			this.__initQ();
+			return;
+		}
 		this.quickClock = new Clock('.clock');
 		this.GenerateQList();
 		this.currentQ = 0;

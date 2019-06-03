@@ -36,22 +36,22 @@ const QUESTIONS = [
 ];
 const THEORY = [
 	{
-		theme: "<i>Начало движения и изменения его направления</i>",
+		theme: "Начало движения и изменения его направления",
 		elements: [
+			// {
+			// 	wrapper: 'p',
+			// 	classes: 'topic-paragraph left',
+			// 	content: ''
+			// },
+			// {
+			// 	wrapper: 'p',
+			// 	classes: 'topic-paragraph right',
+			// 	content: ''
+			// },
 			{
-				wrapper: 'p',
-				classes: 'topic-paragraph left',
-				content: ''
-			},
-			{
-				wrapper: 'p',
-				classes: 'topic-paragraph right',
-				content: ''
-			},
-			{
-				wrapper: 'p',
-				classes: 'topic-paragraph justify',
-				content: '<b><i>Всегда делай это:</b></i>'
+				wrapper: 'h2',
+				classes: 'topic-undertitle',
+				content: 'Всегда делай это:'
 			},
 			{
 				wrapper: 'ul',
@@ -67,9 +67,9 @@ const THEORY = [
 				]
 			},
 			{
-				wrapper: 'p',
-				classes: 'topic-paragraph justify',
-				content: '<b><i>Никогда не делай этого. Не разворачивайся на:</b></i>'
+				wrapper: 'h2',
+				classes: 'topic-undertitle',
+				content: 'Никогда не делай этого. Не разворачивайся на:'
 			},
 			{
 				wrapper: 'ul',

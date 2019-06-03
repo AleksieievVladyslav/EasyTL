@@ -98,6 +98,7 @@
 	font-size: 2.4em;
 	font-family: 'Montserrat';
 	font-weight: 170;
+	font-style: italic;
 }
 .theory-topic > .wrapper {
 	padding-top: 30px;
@@ -108,6 +109,13 @@
 	color: #0652DD;
 	padding-bottom: 30px;
 	font-style: italic;
+}
+.topic-undertitle {
+	font-weight: bold;
+	font-style: italic;
+	padding: 10px 10px;
+	width: 75%;
+	margin: auto;
 }
 .topic-paragraph {
 	font-size: 1.3em;
@@ -142,7 +150,7 @@
 	margin: auto;
 	padding: 10px 10px;
 	color: #0652DD;
-	text-align: center;
+	text-align: justify;
 	font-style: italic;
 	font-weight: 400;
 }

@@ -97,7 +97,7 @@ class Quick {
 		this.qList = [];
 		for (let i = 0; i < QUESTIONS.length; i++) {
 			if (QUESTIONS[i].themeId == theme)
-				qList.push(new Question(QUESTIONS[i]));
+				this.qList.push(new Question(QUESTIONS[i]));
 		}
 	}
 	__initQ() {

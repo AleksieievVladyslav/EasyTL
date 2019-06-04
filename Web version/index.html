@@ -40,7 +40,7 @@
 					</div>
 					<div class="profile">
 						<div class="profile-panel">
-							<div class="profile-state unlogged">
+							<div class="profile-state unlogged active">
 								<div class="guest-header">Гость*</div>
 								<div class="profile-line"><hr></div>
 								<div class="frow">
@@ -57,7 +57,7 @@
 									<div class="share-back back-butt">Назад</div>
 								</div>
 							</div>
-							<div class="profile-state logged active">
+							<div class="profile-state logged">
 								<div class="link_back"><a><i class="fas fa-arrow-left"></i>Выйти из аккаунта</a></div>
 								<div class="profile-header">User101</div>
 								<div class="profile-line"><hr></div>
@@ -88,12 +88,12 @@
 										<label>Е-mail</label>
 										<div class="input">
 											<i class="fas fa-at"></i>
-											<input type="text" name="name" placeholder="Е-mail">
+											<input type="email" name="mail" id="email-login" placeholder="Е-mail">
 										</div>
 										<label>Введите пароль</label>
 										<div class="input">
 											<i class="fas fa-lock"></i>
-											<input type="password" name="pass" placeholder="Пароль">
+											<input type="password" name="pass" id="pass-login" placeholder="Пароль">
 										</div>
 										<div class="submit">Войти</div>
 										<div class="social_media">
@@ -294,23 +294,26 @@
 	<script src="js/common.js" type="text/javascript"></script>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
 
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-	     https://firebase.google.com/docs/web/setup#config-web-app -->
+	<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#config-web-app -->
 
 	<script>
-	  // Your web app's Firebase configuration
-	  var firebaseConfig = {
-	    apiKey: "AIzaSyA7eXnhN9934S6a-Uqngt-3_JJd2M_ID0k",
-	    authDomain: "easytl.firebaseapp.com",
-	    databaseURL: "https://easytl.firebaseio.com",
-	    projectId: "easytl",
-	    storageBucket: "easytl.appspot.com",
-	    messagingSenderId: "318554511356",
-	    appId: "1:318554511356:web:312a38f4ce0f86d6"
-	  };
-	  // Initialize Firebase
-	  firebase.initializeApp(firebaseConfig);
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyB5vPcCOZ0JwqD3W2yYOWj7BMJlcwjOAhM",
+			authDomain: "easytl.firebaseapp.com",
+			databaseURL: "https://easytl.firebaseio.com",
+			projectId: "easytl",
+			storageBucket: "easytl.appspot.com",
+			messagingSenderId: "318554511356",
+			appId: "1:318554511356:web:9dc4ec7af2388fef"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
 	</script>
+
+	<script src="js/fb.js"></script>
 </body>
 </html>

@@ -62,11 +62,28 @@ $(document).ready(function(){
 
 	$('.fbsharelink').click( function() 
 	{
-	    var shareurl = $(this).data('shareurl');
-	    window.open('https://www.facebook.com/sharer/sharer.php?u='+escape(shareurl)+'&t='+document.title, '', 
-	    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		FB.init({
+		  appId      : '1308312569327502',
+		  status     : true,
+		  xfbml      : true,
+		  version    : 'v2.7'
+		});
+		FB.ui({ method: 'feed', 
+	        message: 'Facebook for Websites is super-cool',
+	        name: 'Facebook Dialogs',
+	        caption: 'Reference Documentation',
+	        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+        });
+	    //var shareurl = $(this).data('shareurl');
+	    //window.open('https://www.facebook.com/sharer/sharer.php?u='+escape(shareurl)+'&t='+document.title, '', 
+	    //'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 	    return false;
 	});
+
+	$('.to-topics-list').click(function() {
+		$('.theory-topic').removeClass('active');
+		$('.theory').addClass('active');
+	})
 
 	new Profile(userStatistic);
 });

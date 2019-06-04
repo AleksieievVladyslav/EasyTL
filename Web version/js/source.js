@@ -1,6 +1,126 @@
 const QUESTIONS = [
+// t0 q0
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Въезжая на дорогу по полосе разгона, водитель должен:",
+		initGif: "source/t-0/q0.gif",
+		answers: [
+			{
+				gif: "source/t-0/q0-a0.gif",
+				text: "Вливаться в транспортный поток, другие водители, увидев его, должны обязательно уступить ему дорогу",
+				isCorrect: false
+			},
+			{
+				gif: "source/t-0/q0-a1.gif",
+				text: "Вливаться в транспортный поток, уступая дорогу транспортным средствам, движущимся по этой дороге",
+				isCorrect: true
+			}
+		]
+	},
+// t0 q1
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Разрешено ли в данном месте опасного поворота движение задним ходом?",
+		initGif: "source/t-0/q1.gif",
+		answers: [
+			{
+				gif: "source/t-0/q1-a0.gif",
+				text: "Разрешено",
+				isCorrect: false
+			},
+			{
+				gif: "source/t-0/q1-a1.gif",
+				text: "Запрещено",
+				isCorrect: true
+			}
+		]
+	},
+// t0 q2
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Как разъедутся транспортные средства на лесной дороге?",
+		initGif: "source/t-0/q2.gif",
+		answers: [
+			{
+				gif: "source/t-0/q2-a1.gif",
+				text: "Белый автомобиль проедет первым, синий - вторым.",
+				isCorrect: true
+			},
+			{
+				gif: "source/t-0/q2-a0.gif",
+				text: "Синий автомобиль проедет первым, белый - вторым.",
+				isCorrect: false
+			}
+		]
+	},
+// t0 q3
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Как разъедутся транспортные средства в жилой зоне?",
+		initGif: "source/t-0/q3-loop.gif",
+		answers: [
+			{
+				gif: "source/t-0/q3-a1.gif",
+				text: "Желтый автомобиль проедет первым, серый - вторым.",
+				isCorrect: false
+			},
+			{
+				gif: "source/t-0/q3-a0.gif",
+				text: "Желтый автомобиль проедет первым, серый - вторым.",
+				isCorrect: true
+			}
+		]
+	},
+// t0 q4
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Вы, водитель автомобиля, выезжая с территории жилой зоны, должны уступить дорогу:",
+		initGif: "source/t-0/q4.gif",
+		answers: [
+			{
+				gif: "source/t-0/q4-a1.gif",
+				text: "Автомобилю и пешеходу",
+				isCorrect: true
+			},
+			{
+				gif: "source/t-0/q4-a0.gif",
+				text: "Только автомобилю",
+				isCorrect: false
+			},
+			{
+				gif: "source/t-0/q4-a0.gif",
+				text: "Только пешеходу",
+				isCorrect: false
+			}
+		]
+	},
+// t0 q5
+	{
+		theme: "Начало движения и изменения его направления",
+		themeId: 0,
+		title: "Вы водитель серого автомобиля, решили перестроиться вправо. Ваши действия:",
+		initGif: "source/t-0/q6.gif",
+		answers: [
+			{
+				gif: "source/t-0/q6-a1.gif",
+				text: "Уступите дорогу водителю белого автомобиля",
+				isCorrect: true
+			},
+			{
+				gif: "source/t-0/q6-a0.gif",
+				text: "Начнете перестроение",
+				isCorrect: false
+			}
+		]
+	},
 	{
 		theme: "Обгон",
+		themeId: 1,
 		title: "Разрешен ли обгон водителю красного автомобиля в этой ситуации?",
 		initGif: "source/theme-2/q1.gif",
 		answers: [

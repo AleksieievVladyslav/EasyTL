@@ -15,7 +15,7 @@ class Menu {
 		let address = $(element).attr("href");
 		switch (address) {
 			case "#quick":
-				let quick = new Quick();
+				let quick = new Quick(true, 0);
 				break;
 		}
 		$(this.mainMenu[address]).addClass("active");

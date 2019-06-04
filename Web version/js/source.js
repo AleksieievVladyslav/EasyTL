@@ -368,7 +368,7 @@ const THEORY = [
 				]	
 			} 
 		]
-	},
+	},	
 	{
 		theme: "Обгон",
 		elements: [
@@ -571,18 +571,18 @@ const THEORY = [
 ]
 var userStatistic = {
 	name: "User101",
-	stars: "7",
-	passedTopics: 6,
+	stars: "0",
+	passedTopics: 0,
 	questions: {
-		correct: 1,
-		total: 1
+		correct: 0,
+		total: 0
 	},
 	tests: {
-		passed: 2,
-		total: 5
+		passed: 0,
+		total: 0
 	},
 	averages: {
-		correctAnswers: 10,
-		time: 5
+		correctAnswers: 0,
+		time: 0
 	}
 }

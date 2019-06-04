@@ -45,6 +45,7 @@ class Profile {
 		}
 
 		let starsContainer = $('.profile .stars');
+		starsContainer.empty();
 		for (let j = 0; j < res.length; j++) {
 			switch (res[j]) {
 				case 0:

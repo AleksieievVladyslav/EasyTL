@@ -1,14 +1,31 @@
+var NAME;
 $(document).ready(function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
 			var uid = user.uid;
-			userStatistic = _getUserStat(uid);
+			userStatistic = _getUserStat(uid, NAME);
+
+			$('#logout').off().click(function() {
+				firebase.auth().signOut().then(function() {
+				  $('.profile-state').removeClass('active');
+				  $('.unlogged').addClass('active');
+				}).catch(function(error) {
+					alert('Error: \n' + error.message);
+				});
+			})
 		} else {
 			// User is signed out.
 			// ...
 			console.log('There is nobody');
 		}
+	});
+	$('.registration .submit').click(function() {
+		var name = $('#name-reg').val();
+		var email = $('#email-reg').val();
+		var password = $('#pass-reg').val();
+		NAME = name;
+		_regUser(email, password);
 	});
 	$('.login .submit').click(function() {
 		var email = $('#email-login').val();
@@ -17,10 +34,10 @@ $(document).ready(function() {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
-		  alert('Erorr:\n' + errorMessage);
+		  alert('Error:\n' + errorMessage);
 		  // ...
 		});
-	})
+	});
 	$('.sub_with_google').click(function(e) {
 		e.preventDefault();
 		// firebase.database().ref('GN3bp7QdKoTWEXmjmzENkzVtk4n1').set({
@@ -32,8 +49,15 @@ $(document).ready(function() {
 		// 	username = (snapshot.val().Name) ? snapshot.val().Name : 'Anonymous';
 		// 	console.log(username);
 		// })
-	})
+	});
 });
+function _regUser(email, password) {
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		alert('Error:\n' + errorMessage);
+	});
+}
 function _setUserStat(uid, stat) {
 	firebase.database().ref(uid).set({
 		Name: stat.name,
@@ -44,8 +68,8 @@ function _setUserStat(uid, stat) {
 		averages: stat.averages
 	});
 }
-function _getUserStat(uid) {
-	let res = {};
+function _getUserStat(uid, name) {
+	let res = {name: name};
 	firebase.database().ref(uid).once('value').then(function(snapshot) {
 		if (snapshot.val()) {
 			res.name = (snapshot.val().Name) ? snapshot.val().Name : 'Anonymous';
@@ -55,11 +79,11 @@ function _getUserStat(uid) {
 			res.tests = (snapshot.val().tests) ? snapshot.val().tests : { passed: 0, total: 0};
 			res.averages = (snapshot.val().averages) ? snapshot.val().averages : { correctAnswers: 0, time: 0};
 		} else {
-			res = userStatistic;
+			res = $.extend(res, {stars: "0", passedTopics: 0, questions: { correct: 0, total: 0 }, tests: { passed: 0, total: 0 }, 
+				averages: { correctAnswers: 0, time: 0} });
 		}
-
 		new Profile(res);
-		$('.unlogged').removeClass('active');
+		$('.profile-state').removeClass('active');
 		$('.logged').addClass('active');
 		_setUserStat(uid, res);
 		return res;

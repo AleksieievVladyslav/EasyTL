@@ -85,5 +85,4 @@ $(document).ready(function(){
 		$('.theory').addClass('active');
 	})
 
-	new Profile(userStatistic);
 });

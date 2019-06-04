@@ -118,19 +118,20 @@ const QUESTIONS = [
 			}
 		]
 	},
+//t1 q0
 	{
 		theme: "Обгон",
 		themeId: 1,
 		title: "Разрешен ли обгон водителю красного автомобиля в этой ситуации?",
-		initGif: "source/theme-2/q1.gif",
+		initGif: "source/theme-2/q0.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q1-a1.gif",
+				gif: "source/theme-2/q0-a1.gif",
 				text: "Разрешен",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q1-a2.gif",
+				gif: "source/theme-2/q0-a2.gif",
 				text: "Запрещен",
 				isCorrect: true
 			}
@@ -138,22 +139,194 @@ const QUESTIONS = [
 	},
 	{
 		theme: "Обгон",
+		themeId: 1,
 		title: "Разрешено ли водителю белого автомобиля выполнить обгон в этой ситуации?",
-		initGif: "source/theme-2/q2.gif",
+		initGif: "source/theme-2/q1.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q2-a1.gif",
-				text: "Разрешен",
+				gif: "source/theme-2/q1-a1.gif",
+				text: "Разрешено",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q2-a2.gif",
-				text: "Запрещен",
+				gif: "source/theme-2/q1-a0.gif",
+				text: "Запрещено",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Обгон",
+		themeId: 1,
+		title: "Разрешен ли обгон в этой ситуации?",
+		initGif: "source/theme-2/q2.gif", 
+		answers: [
+			{
+				gif: "source/theme-2/q2-a1.gif",
+				text: "Разрешен в любом случае",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q2-a0.gif",
+				text: "Запрещен.",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Обгон",
+		themeId: 1,
+		title: "Разрешено ли водителю белого автомобиля выполнить обгон трактора в данной ситуации?",
+		initGif: "source/theme-2/q3.gif", 
+		answers: [
+			{
+				gif: "source/theme-2/q3-a1.gif",
+				text: "Разрешено, при этом он должен убедиться в безопасности маневра",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q3-a0.gif",
+				text: "Запрещено",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Обгон",
+		themeId: 1,
+		title: "Как должен поступить водитель синего автомобиля, который движется прямо, в данной ситуации?",
+		initGif: "source/theme-2/q4.gif", 
+		answers: [
+			{
+				gif: "source/theme-2/q3-a0.gif",
+				text: "Остановиться перед перекрестком и дождаться, пока фиолетовый автомобиль повернет налево",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q3-a1.gif",
+				text: "Объехать фиолетовый автомобиль справа, обеспечив безопасность движения",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "Имеет ли право водитель остановиться в этом месте?",
+		initGif: "source/t-3/q0.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q0-a0.gif",
+				text: "Имеет право только для посадки (высадки) пассажиров",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q0-a1.gif",
+				text: "Не имеет права",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "На каком из мест водителю легкового автомобиля разрешено остановиться?",
+		initGif: "source/t-3/q1.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q1-a0.gif",
+				text: "На месте А",
+				isCorrect: true
+			},
+			{
+				gif: "source/theme-2/q1-a1.gif",
+				text: "На месте Б",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q1-a1.gif",
+				text: "На месте Г",
+				isCorrect: false
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "В каком из мест водителю разрешено выполнить остановку?",
+		initGif: "source/t-3/q2.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q2-a0.gif",
+				text: "В месте Б",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q1-a1.gif",
+				text: "На месте А",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "Разрешено ли водителю остановиться в этом месте?",
+		initGif: "source/t-3/q3.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q3-a0.gif",
+				text: "Разрешено",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q3-a1.gif",
+				text: "Запрещено",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "Разрешено ли водителю остановиться на путепроводе в этом месте?",
+		initGif: "source/t-3/q4.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q4-a0.gif",
+				text: "Разрешено только для посадки (высадки) пассажиров",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q4-a1.gif",
+				text: "Запрещено",
+				isCorrect: true
+			}
+		]
+	},
+	{
+		theme: "Остановка и стоянка",
+		themeId: 2,
+		title: "Разрешено ли водителю остановиться на путепроводе в этом месте?",
+		initGif: "source/t-3/q4.gif",
+		answers: [
+			{
+				gif: "source/theme-2/q4-a0.gif",
+				text: "Разрешено только для посадки (высадки) пассажиров",
+				isCorrect: false
+			},
+			{
+				gif: "source/theme-2/q4-a1.gif",
+				text: "Запрещено",
 				isCorrect: true
 			}
 		]
 	}
 ];
+
+
+
+
 const THEORY = [
 	{
 		theme: "Начало движения и изменения его направления",

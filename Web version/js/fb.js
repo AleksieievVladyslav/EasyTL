@@ -38,17 +38,17 @@ $(document).ready(function() {
 		  // ...
 		});
 	});
-	$('.sub_with_google').click(function(e) {
+	$('.login .sub_with_google').click(function(e) {
 		e.preventDefault();
-		// firebase.database().ref('GN3bp7QdKoTWEXmjmzENkzVtk4n1').set({
-		//     Name: 'VladTest'
-		// });
-		var username = "";
-		// var userId = firebase.auth().currentUser.uid;
-		// firebase.database().ref(userId).once('value').then(function(snapshot) {
-		// 	username = (snapshot.val().Name) ? snapshot.val().Name : 'Anonymous';
-		// 	console.log(username);
-		// })
+		var provider = new firebase.auth.GoogleAuthProvider();
+		console.log(1);
+		firebase.auth().signInWithPopup(provider).then(function(result) {
+		  // The signed-in user info.
+		  var user = result.user;
+		}).catch(function(error) {
+		  var errorMessage = error.message;
+		  alert('Error: ' + errorMessage);
+		});
 	});
 });
 function _regUser(email, password) {

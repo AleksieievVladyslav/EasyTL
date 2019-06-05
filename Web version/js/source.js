@@ -65,7 +65,7 @@ const QUESTIONS = [
 		answers: [
 			{
 				gif: "source/t-0/q3-a1.gif",
-				text: "Желтый автомобиль проедет первым, серый - вторым.",
+				text: "Cерый автомобиль проедет первым, желтый - вторым.",
 				isCorrect: false
 			},
 			{

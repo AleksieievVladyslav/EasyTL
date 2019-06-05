@@ -84,5 +84,5 @@ $(document).ready(function(){
 		$('.theory-topic').removeClass('active');
 		$('.theory').addClass('active');
 	})
-
+	new Profile(userStatistic);
 });

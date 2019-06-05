@@ -5,8 +5,10 @@ class Quick {
 			$('.q-a').off().removeClass('active').removeClass('passed');
 
 			// stop the clock
-			this.quickClock.Stop();
-			$('.clock').empty();
+			if (this.quickClock) {
+				this.quickClock.Stop();
+				$('.clock').empty();
+			}
 		}
 		$('.progress').show();
 		$('.q-result').hide();
@@ -14,6 +16,11 @@ class Quick {
 		$('.q-progress-bar').css({'width' : '0%'});
 		$('.quick').removeClass('active');
 		$('.main-menu').addClass('active');
+	}
+	PrintStar() {
+		if (this.score == this.qList.length) $('.q-american-result').append('<div><i class="fas fa-star"></i></div>');
+		else if (this.score >= this.qList.length / 2) $('.q-american-result').append('<div><i class="fas fa-star-half-alt"></i></div>');
+		else $('.q-american-result').append('<div><i class="far fa-star"></i></div>');
 	}
 	GetAmericanResult() {
 		if (this.score == 20) return 'A+';
@@ -48,8 +55,13 @@ class Quick {
 		$('.q-a').off().removeClass('active').removeClass('passed');
 
 		// stop the clock
-		this.quickClock.Stop();
-		$('.clock').empty();
+		if (this.testTimer) {
+			clearTimeout(this.testTimer); 
+		}
+		if (this.quickClock) {
+			this.quickClock.Stop();
+			$('.clock').empty();
+		}
 
 		// reset Display
 		$('#q-title').html('Результат');
@@ -61,10 +73,20 @@ class Quick {
 
 		// show Result
 		$('.q-result').show();
-		$('#q-state-value-time-minutes').html(this.quickClock.GetM(true));
-		$('#q-state-value-time-seconds').html(this.quickClock.GetS(true));
+		$('.q-american-result').empty();
+		$('#q-state-value-all').html(this.qList.length);
+		if (this.type) {
+			$('.q-state > .row:nth-child(2n)').hide();
+			this.PrintStar();
+		} else {
+ 			this.PrintAmereican();
+			$('.q-state > .row:nth-child(2n)').show();
+			if (this.quickClock) {
+				$('#q-state-value-time-minutes').html(this.quickClock.GetM(true));
+				$('#q-state-value-time-seconds').html(this.quickClock.GetS(true));
+			}
+		}
 		$('#q-state-value-result').html(this.score);
- 		this.PrintAmereican();
 
 		// set Exit Button
 		$('.q-next span').html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')
@@ -104,7 +126,11 @@ class Quick {
 		let question = this.qList[this.currentQ];
 
 		// init Display
-		$('#img > img').attr({src : question.initGif});
+		if (this.qList[this.currentQ].isPassed) {
+			$('#img > img').attr({src : question.resultGif});
+		} else {
+			$('#img > img').attr({src : question.initGif});
+		}
 		$('#progress').show().html(this.currentQ + 1);
 		$('#q-title').html(question.theme);
 		$('#q-formulation').html(question.title);
@@ -133,27 +159,37 @@ class Quick {
 		}
 
 		// init answers buttons
+		$('.q-a').removeClass('active');
 		for (let i = 0; i < question.answers.length; i++) {
-			$('#answer-' + i).addClass('active').removeClass('passed')
+			$('#answer-' + i).off().addClass('active').removeClass('passed')
 				.html(question.answers[i].text)
 				.click(() => {
 					this.Check(i);
 				});
+			if (this.qList[this.currentQ].isPassed) {
+				$('#answer-' + i).addClass('passed');
+			}
 		}
 	}
 	constructor(type, theme) {
 		if (type === true) {
+			this.type = true;
 			this.currentQ = 0;
 			this.score = 0;
 			this.GenerateQListTheme(theme);
 			$('.q-prev').show();
 			this.__initQ();
+			$('#quick-all').html(this.qList.length);
 			return;
 		}
 		this.quickClock = new Clock('.clock');
+		this.testTimer = setTimeout(() => {
+			this.End();
+		}, 5000);
 		this.GenerateQList();
 		this.currentQ = 0;
 		this.score = 0;
+		$('#quick-all').html(this.qList.length);
 		$('.q-prev').show();
 		this.__initQ();
 	}

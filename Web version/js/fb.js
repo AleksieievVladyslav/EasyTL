@@ -18,7 +18,7 @@ $(document).ready(function() {
 		} else {
 			// User is signed out.
 			// ...
-			console.log('There is nobody');
+			USER = false;
 		}
 	});
 	$('.registration .submit').click(function() {
@@ -75,7 +75,7 @@ function _getUserStat(uid, name) {
 	firebase.database().ref(uid).once('value').then(function(snapshot) {
 		if (snapshot.val()) {
 			res.name = (snapshot.val().Name) ? snapshot.val().Name : 'Anonymous';
-			res.stars = (snapshot.val().Stars) ? snapshot.val().Stars : '0';
+			res.stars = (snapshot.val().Stars) ? snapshot.val().Stars : [0,0,0,0,0,0];
 			res.passedTopics = (snapshot.val().passedTopics) ? +snapshot.val().passedTopics : 0;
 			res.questions = (snapshot.val().questions) ? snapshot.val().questions : { correct: 0, total: 0};
 			res.tests = (snapshot.val().tests) ? snapshot.val().tests : { passed: 0, total: 0};

@@ -178,20 +178,28 @@
 	top: 630px;
 	left: 1px;
 }
-.link_back a {
+.link_back a, .link_forw a{
 	cursor: pointer;
 	color: #66757F;
 	font-size: 20px;
 }
-.link_back i {
+.link_back i{
 	padding-right: 5px;
+}
+.link_forw i {
+	padding-left: 5px;
 }
 .link_back{
 	position:absolute;
 	top: 20px;
 	left: 30px;
 }
-.link_back a:hover {
+.link_forw {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+}
+.link_back a:hover, .link_forw a:hover {
 	color: #33424C;
 }
 .logged {

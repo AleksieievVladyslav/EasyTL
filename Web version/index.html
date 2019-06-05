@@ -16,7 +16,7 @@
 <body>
 	<main>
 		<div class="dynamic-panel">
-			<div class="state load">
+			<div class="state load active">
 				<div class="title"><h1>Make it easier</h1><h1 class="light">with</h1></div>
 				<div class="logo"><h1><i class="fas fa-american-sign-language-interpreting"></i>Easy TL</h1></div>
 				<div id="fountainG">
@@ -40,110 +40,112 @@
 					</div>
 					<div class="profile">
 						<div class="profile-panel">
-							<div class="profile-state unlogged active">
-								<div class="guest-header">Гость*</div>
-								<div class="profile-line"><hr></div>
-								<div class="frow">
-									<div class="register reg-click but-bb">Зарегистрироваться</div><div class="separator"></div>
-									<div class="enter enter-click but-bb">Войти</div>
-								</div>
-								<div class="arrow-text"><span>Авторизируйтесь или зарегистрируйтесь!</span><div class="arrow"></div></div>
-							</div>
-							<div class="profile-state share">
-								<div class="column">
-									<a class="fbsharelink" data-shareurl="https://www.facebook.com/">
-									<div class="f-icon"><i class="fab fa-facebook-square"></i></div>
-									<div class="facebook">Поделиться через Facebook</a></div>
-									<div class="share-back back-butt">Назад</div>
-								</div>
-							</div>
-							<div class="profile-state logged">
-								<div class="link_back" id="logout"><a><i class="fas fa-arrow-left"></i>Выйти из аккаунта</a></div>
-								<div class="profile-header">User101</div>
-								<div class="profile-line"><hr></div>
-								<div class="stars">
-								</div>
-								<div class="questions">Вопросы
-									<div class="correct">Правильных: <span id="correctanswers">0</span></div>
-									<div class="total">Всего: <span id="totalanswers">0</span></div>
-								</div>
-								<div class="tests">Тесты
-									<div class="correct">Пройденных: <span id="passedtests">0</span></div>	
-									<div class="total">Всего: <span id="totaltests">0</span></div>
-								</div>
-								<div class="averages">Средние значения
-									<div class="correct">Верных ответов: <span id="averageanswers">0</span></div>
-									<div class="total">Время прохождения: <span id="averagetime">0</span></div>
-								</div>
-								<div class="share-result">Поделиться результатом</div>
-							</div>
-							<div class="profile-state login">
-								<div class="link_back back-to-guest"><a><i class="fas fa-arrow-left"></i>Назад</a></div>
-								<div class="form">
-									<div class="form-h">
-										<h2>Вход</h2>
-										<h3>Войдите через E-mail</h3>
+							<div class = "profile state load-reg">
+								<div class="profile-state unlogged active">
+									<div class="guest-header">Гость*</div>
+									<div class="profile-line"><hr></div>
+									<div class="frow">
+										<div class="register reg-click but-bb">Зарегистрироваться</div><div class="separator"></div>
+										<div class="enter enter-click but-bb">Войти</div>
 									</div>
-									<form action="">
-										<label>Е-mail</label>
-										<div class="input">
-											<i class="fas fa-at"></i>
-											<input type="email" name="mail" id="email-login" placeholder="Е-mail">
-										</div>
-										<label>Введите пароль</label>
-										<div class="input">
-											<i class="fas fa-lock"></i>
-											<input type="password" name="pass" id="pass-login" placeholder="Пароль">
-										</div>
-										<div class="submit">Войти</div>
-										<div class="social_media">
-											<p>или</p>
-											<div class="sub sub_with_google">
-												<i class="fab fa-google-plus-g"></i>
-												<a href="">Войти через Google+</a>
-											</div>
-											<div class="sub sub_with_facebook">
-												<i class="fab fa-facebook-square"></i>
-												<a href="">Войти через FaceBook</a>
-											</div>
-										</div>
-									</form>
+									<div class="arrow-text"><span>Авторизируйтесь или зарегистрируйтесь!</span><div class="arrow"></div></div>
 								</div>
-							</div>
-							<div class="profile-state registration">
-								<div class="link_back back-to-guest"><a><i class="fas fa-arrow-left"></i>Назад</a></div>
-								<div class="form">
-									<h2>Регистрация</h2>
-									<h3>Зарегистрируйтесь через E-mail</h3>
-									<form method="" action="">
-										<label>Имя пользователя</label>
-										<div class="input">
-											<i class="fas fa-user"></i>
-											<input type="text" name="username" id="name-reg" placeholder="Имя пользователя">
+								<div class="profile-state share">
+									<div class="column">
+										<a class="fbsharelink" data-shareurl="https://www.facebook.com/">
+										<div class="f-icon"><i class="fab fa-facebook-square"></i></div>
+										<div class="facebook">Поделиться через Facebook</a></div>
+										<div class="share-back back-butt">Назад</div>
+									</div>
+								</div>
+								<div class="profile-state logged">
+									<div class="link_back" id="logout"><a><i class="fas fa-arrow-left"></i>Выйти из аккаунта</a></div>
+									<div class="profile-header">User101</div>
+									<div class="profile-line"><hr></div>
+									<div class="stars">
+									</div>
+									<div class="questions">Вопросы
+										<div class="correct">Правильных: <span id="correctanswers">0</span></div>
+										<div class="total">Всего: <span id="totalanswers">0</span></div>
+									</div>
+									<div class="tests">Тесты
+										<div class="correct">Пройденных: <span id="passedtests">0</span></div>	
+										<div class="total">Всего: <span id="totaltests">0</span></div>
+									</div>
+									<div class="averages">Средние значения
+										<div class="correct">Верных ответов: <span id="averageanswers">0</span></div>
+										<div class="total">Время прохождения: <span id="averagetime">0</span></div>
+									</div>
+									<div class="share-result">Поделиться результатом</div>
+								</div>
+								<div class="profile-state login">
+									<div class="link_back back-to-guest"><a><i class="fas fa-arrow-left"></i>Назад</a></div>
+									<div class="form">
+										<div class="form-h">
+											<h2>Вход</h2>
+											<h3>Войдите через E-mail</h3>
 										</div>
-										<label>Е-mail</label>
-										<div class="input">
-											<i class="fas fa-at"></i>
-											<input type="email" name="useremail" id="email-reg" placeholder="Е-mail">
-										</div>
-										<label>Пароль</label>
-										<div class="input">
-											<i class="fas fa-lock"></i>
-											<input type="password" name="userpassword" id="pass-reg" placeholder="Введите пароль">
-										</div>
-										<div class="submit">Зарегистрироваться</div>
-										<div class="social_media">
-											<p>или</p>
-											<div class="sub sub_with_google">
-												<i class="fab fa-google-plus-g"></i>
-												<a href="">Войти через Google+</a>
+										<form action="">
+											<label>Е-mail</label>
+											<div class="input">
+												<i class="fas fa-at"></i>
+												<input type="email" name="mail" id="email-login" placeholder="Е-mail">
 											</div>
-											<div class="sub sub_with_facebook">
-												<i class="fab fa-facebook-square"></i>
-												<a href="">Войти через FaceBook</a>
+											<label>Введите пароль</label>
+											<div class="input">
+												<i class="fas fa-lock"></i>
+												<input type="password" name="pass" id="pass-login" placeholder="Пароль">
 											</div>
-										</div>
-									</form>
+											<div class="submit">Войти</div>
+											<div class="social_media">
+												<p>или</p>
+												<div class="sub sub_with_google">
+													<i class="fab fa-google-plus-g"></i>
+													<a href="">Войти через Google+</a>
+												</div>
+												<div class="sub sub_with_facebook">
+													<i class="fab fa-facebook-square"></i>
+													<a href="">Войти через FaceBook</a>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="profile-state registration">
+									<div class="link_back back-to-guest"><a><i class="fas fa-arrow-left"></i>Назад</a></div>
+									<div class="form">
+										<h2>Регистрация</h2>
+										<h3>Зарегистрируйтесь через E-mail</h3>
+										<form method="" action="">
+											<label>Имя пользователя</label>
+											<div class="input">
+												<i class="fas fa-user"></i>
+												<input type="text" name="username" id="name-reg" placeholder="Имя пользователя">
+											</div>
+											<label>Е-mail</label>
+											<div class="input">
+												<i class="fas fa-at"></i>
+												<input type="email" name="useremail" id="email-reg" placeholder="Е-mail">
+											</div>
+											<label>Пароль</label>
+											<div class="input">
+												<i class="fas fa-lock"></i>
+												<input type="password" name="userpassword" id="pass-reg" placeholder="Введите пароль">
+											</div>
+											<div class="submit">Зарегистрироваться</div>
+											<div class="social_media">
+												<p>или</p>
+												<div class="sub sub_with_google">
+													<i class="fab fa-google-plus-g"></i>
+													<a href="">Войти через Google+</a>
+												</div>
+												<div class="sub sub_with_facebook">
+													<i class="fab fa-facebook-square"></i>
+													<a href="">Войти через FaceBook</a>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>

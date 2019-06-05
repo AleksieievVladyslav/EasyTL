@@ -68,12 +68,10 @@ $(document).ready(function(){
 		  xfbml      : true,
 		  version    : 'v2.7'
 		});
-		FB.ui({ method: 'feed', 
-	        message: 'Facebook for Websites is super-cool',
-	        name: 'Facebook Dialogs',
-	        caption: 'Reference Documentation',
-	        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-        });
+		FB.ui({
+		  method: 'feed',
+		  link: 'https://easytlnew.firebaseapp.com/'
+		}, function(response){})
 	    //var shareurl = $(this).data('shareurl');
 	    //window.open('https://www.facebook.com/sharer/sharer.php?u='+escape(shareurl)+'&t='+document.title, '', 
 	    //'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');

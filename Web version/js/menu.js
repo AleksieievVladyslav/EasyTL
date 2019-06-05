@@ -1,3 +1,4 @@
+var CURRENT_TOPIC;
 class Menu {
 	mainMenu = {
 		"#theory" : ".theory",
@@ -15,7 +16,7 @@ class Menu {
 		let address = $(element).attr("href");
 		switch (address) {
 			case "#quick":
-				let quick = new Quick(true, 0);
+				let quick = new Quick();
 				break;
 		}
 		$(this.mainMenu[address]).addClass("active");
@@ -31,6 +32,7 @@ class Menu {
 			return;
 		}
 		let index = $(target).index();
+		CURRENT_TOPIC = index;
 		new Theory(index);
 		$('.theory').removeClass('active');
 		$('.theory-topic').addClass('active');

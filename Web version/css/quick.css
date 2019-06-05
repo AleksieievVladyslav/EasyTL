@@ -78,7 +78,6 @@ p.progress-content {
 .q-a {
 	font-weight: 200;
 	display: none;
-	width: 45%;
 	overflow: hidden;
 	border: 0.5px solid #777777;
 	padding: 5px 10px;
@@ -89,19 +88,13 @@ p.progress-content {
 	-o-user-select: none;
 	user-select: none;
 	cursor: pointer;
+	margin-bottom: 10px;
 }
 .q-a:hover {
 	background: #E0EFDF;
 }
-.q-a:nth-child(2n) {
-	margin-left: 5%;
-}
-.q-a.long {
-	width: 100%;
-	margin: 0;
-}
 .q-a.active {
-	display: inline-block;
+	display: block;
 }
 .answers {
 	vertical-align: middle;
@@ -349,4 +342,15 @@ p.progress-content {
 	font-style: italic;
 	text-align: center;
 	cursor: pointer;
+}
+.q-american-result > div > i{
+	font-size: 150px;
+	-webkit-transform: rotate(20deg);
+	-ms-transform: rotate(20deg);
+	-o-transform: rotate(20deg);
+	transform: rotate(20deg);
+	color: #f00;
+}
+.q-american-result > div {
+	text-align: center;
 }

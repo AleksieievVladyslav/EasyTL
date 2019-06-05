@@ -1,19 +1,39 @@
 class Quick {
 	Close(type) {
+		if (this.testTimer) {
+			clearTimeout(this.testTimer); 
+		}
+		if (!this.isSaved) {
+			this.Save();
+		}
 		if (type === true) {
 			// remove answers buttons
 			$('.q-a').off().removeClass('active').removeClass('passed');
 
 			// stop the clock
-			this.quickClock.Stop();
-			$('.clock').empty();
+			if (this.quickClock) {
+				this.quickClock.Stop();
+				$('.clock').empty();
+			}
 		}
+		
+		$('.q-next span').off();
 		$('.progress').show();
 		$('.q-result').hide();
 		$('.q-content').show();
 		$('.q-progress-bar').css({'width' : '0%'});
 		$('.quick').removeClass('active');
 		$('.main-menu').addClass('active');
+	}
+	GetStar() {
+		if (this.score == this.qList.length) return 2;
+		if (this.score >= this.qList.length / 2) return 1;
+		return 0;
+	}
+	PrintStar() {
+		if (this.score == this.qList.length) $('.q-american-result').append('<div><i class="fas fa-star"></i></div>');
+		else if (this.score >= this.qList.length / 2) $('.q-american-result').append('<div><i class="fas fa-star-half-alt"></i></div>');
+		else $('.q-american-result').append('<div><i class="far fa-star"></i></div>');
 	}
 	GetAmericanResult() {
 		if (this.score == 20) return 'A+';
@@ -44,12 +64,21 @@ class Quick {
  			</div>');
  	}
 	End() {
+		if (!this.isSaved) {
+			this.isSaved = true;
+			this.Save();
+		}
 		// remove answers buttons
 		$('.q-a').off().removeClass('active').removeClass('passed');
 
 		// stop the clock
-		this.quickClock.Stop();
-		$('.clock').empty();
+		if (this.testTimer) {
+			clearTimeout(this.testTimer); 
+		}
+		if (this.quickClock) {
+			this.quickClock.Stop();
+			$('.clock').empty();
+		}
 
 		// reset Display
 		$('#q-title').html('Результат');
@@ -61,13 +90,23 @@ class Quick {
 
 		// show Result
 		$('.q-result').show();
-		$('#q-state-value-time-minutes').html(this.quickClock.GetM(true));
-		$('#q-state-value-time-seconds').html(this.quickClock.GetS(true));
+		$('.q-american-result').empty();
+		$('#q-state-value-all').html(this.qList.length);
+		if (this.type) {
+			$('.q-state > .row:nth-child(2n)').hide();
+			this.PrintStar();
+		} else {
+ 			this.PrintAmereican();
+			$('.q-state > .row:nth-child(2n)').show();
+			if (this.quickClock) {
+				$('#q-state-value-time-minutes').html(this.quickClock.GetM(true));
+				$('#q-state-value-time-seconds').html(this.quickClock.GetS(true));
+			}
+		}
 		$('#q-state-value-result').html(this.score);
- 		this.PrintAmereican();
 
 		// set Exit Button
-		$('.q-next span').html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')
+		$('.q-next span').off().html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')
 			.click(() => {this.Close(false)});
 	}
 	PrevQ() {
@@ -89,6 +128,26 @@ class Quick {
 		if (this.qList[this.currentQ].answers[answer].isCorrect) this.score++;
 		$('.q-a').addClass('passed');
 	}
+	Save() {
+		if (USER) {
+			if (this.type) {
+				userStatistic.questions.total += this.qList.length;
+				userStatistic.questions.correct += this.score;
+				userStatistic.stars[this.theme] = this.GetStar();
+				if (this.GetStar() >= 1) userStatistic.passedTopics += 1;
+			} else {
+				userStatistic.questions.total += 20;
+				userStatistic.questions.correct += this.score;
+				userStatistic.tests.total += 1;
+				if (this.score >= 18) userStatistic.tests.passed += 1;
+				userStatistic.averages.correctAnswers = (userStatistic.averages.correctAnswers * (userStatistic.tests.total - 1) + this.score) / userStatistic.tests.total;
+				userStatistic.averages.time = (userStatistic.averages.time * (userStatistic.tests.total - 1) + this.quickClock.GetM(true) * 60 + this.quickClock.GetS(true)) / userStatistic.tests.total;
+			}
+			console.log(userStatistic);
+			new Profile(userStatistic);
+			_setUserStat(firebase.auth().currentUser.uid, userStatistic);
+		}
+	}
 	GenerateQList() {
 		this.qList = [];
 		for (let i = 0; i < 20; i++) this.qList.push(new Question(QUESTIONS[0]));
@@ -104,7 +163,11 @@ class Quick {
 		let question = this.qList[this.currentQ];
 
 		// init Display
-		$('#img > img').attr({src : question.initGif});
+		if (this.qList[this.currentQ].isPassed) {
+			$('#img > img').attr({src : question.resultGif});
+		} else {
+			$('#img > img').attr({src : question.initGif});
+		}
 		$('#progress').show().html(this.currentQ + 1);
 		$('#q-title').html(question.theme);
 		$('#q-formulation').html(question.title);
@@ -133,27 +196,38 @@ class Quick {
 		}
 
 		// init answers buttons
+		$('.q-a').removeClass('active');
 		for (let i = 0; i < question.answers.length; i++) {
-			$('#answer-' + i).addClass('active').removeClass('passed')
+			$('#answer-' + i).off().addClass('active').removeClass('passed')
 				.html(question.answers[i].text)
 				.click(() => {
 					this.Check(i);
 				});
+			if (this.qList[this.currentQ].isPassed) {
+				$('#answer-' + i).addClass('passed');
+			}
 		}
 	}
 	constructor(type, theme) {
 		if (type === true) {
+			this.type = true;
 			this.currentQ = 0;
 			this.score = 0;
+			this.theme = theme;
 			this.GenerateQListTheme(theme);
 			$('.q-prev').show();
 			this.__initQ();
+			$('#quick-all').html(this.qList.length);
 			return;
 		}
 		this.quickClock = new Clock('.clock');
+		this.testTimer = setTimeout(() => {
+			this.End();
+		}, 20 * 60 * 1000 + 1000);
 		this.GenerateQList();
 		this.currentQ = 0;
 		this.score = 0;
+		$('#quick-all').html(this.qList.length);
 		$('.q-prev').show();
 		this.__initQ();
 	}

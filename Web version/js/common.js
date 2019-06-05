@@ -68,13 +68,15 @@ $(document).ready(function(){
 		  xfbml      : true,
 		  version    : 'v2.7'
 		});
+
 		FB.ui({
 		  method: 'feed',
 		  link: 'https://easytlnew.firebaseapp.com/'
 		}, function(response){})
-	    //var shareurl = $(this).data('shareurl');
-	    //window.open('https://www.facebook.com/sharer/sharer.php?u='+escape(shareurl)+'&t='+document.title, '', 
-	    //'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+	    var shareurl = $(this).data('shareurl');
+	    
+		// window.open('https://www.facebook.com/dialog/share?app_id=1308312569327502&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer', '', 
+	 //    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 	    return false;
 	});
 	$('.to-quick-test').click(function() {

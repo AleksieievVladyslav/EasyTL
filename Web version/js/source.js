@@ -65,12 +65,12 @@ const QUESTIONS = [
 		answers: [
 			{
 				gif: "source/t-0/q3-a1.gif",
-				text: "Cерый автомобиль проедет первым, желтый - вторым.",
+				text: "Желтый автомобиль проедет первым, серый - вторым.",
 				isCorrect: false
 			},
 			{
 				gif: "source/t-0/q3-a0.gif",
-				text: "Желтый автомобиль проедет первым, серый - вторым.",
+				text: "Cерый автомобиль проедет первым, желтый - вторым.",
 				isCorrect: true
 			}
 		]
@@ -131,7 +131,7 @@ const QUESTIONS = [
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q0-a2.gif",
+				gif: "source/theme-2/q0-a0.gif",
 				text: "Запрещен",
 				isCorrect: true
 			}
@@ -198,12 +198,12 @@ const QUESTIONS = [
 		initGif: "source/theme-2/q4.gif", 
 		answers: [
 			{
-				gif: "source/theme-2/q3-a0.gif",
+				gif: "source/theme-2/q4-a0.gif",
 				text: "Остановиться перед перекрестком и дождаться, пока фиолетовый автомобиль повернет налево",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q3-a1.gif",
+				gif: "source/theme-2/q4-a1.gif",
 				text: "Объехать фиолетовый автомобиль справа, обеспечив безопасность движения",
 				isCorrect: true
 			}
@@ -216,12 +216,12 @@ const QUESTIONS = [
 		initGif: "source/t-3/q0.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q0-a0.gif",
+				gif: "source/t-3/q0-a0.gif",
 				text: "Имеет право только для посадки (высадки) пассажиров",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q0-a1.gif",
+				gif: "source/t-3/q0-a1.gif",
 				text: "Не имеет права",
 				isCorrect: true
 			}
@@ -234,17 +234,17 @@ const QUESTIONS = [
 		initGif: "source/t-3/q1.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q1-a0.gif",
+				gif: "source/t-3/q1-a0.gif",
 				text: "На месте А",
 				isCorrect: true
 			},
 			{
-				gif: "source/theme-2/q1-a1.gif",
+				gif: "source/t-3/q1-a1.gif",
 				text: "На месте Б",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q1-a1.gif",
+				gif: "source/t-3/q1-a1.gif",
 				text: "На месте Г",
 				isCorrect: false
 			}
@@ -257,12 +257,12 @@ const QUESTIONS = [
 		initGif: "source/t-3/q2.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q2-a0.gif",
+				gif: "source/t-3/q2-a0.gif",
 				text: "В месте Б",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q1-a1.gif",
+				gif: "source/t-3/q1-a1.gif",
 				text: "На месте А",
 				isCorrect: true
 			}
@@ -275,12 +275,12 @@ const QUESTIONS = [
 		initGif: "source/t-3/q3.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q3-a0.gif",
+				gif: "source/t-3/q3-a0.gif",
 				text: "Разрешено",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q3-a1.gif",
+				gif: "source/t-3/q3-a1.gif",
 				text: "Запрещено",
 				isCorrect: true
 			}
@@ -293,12 +293,12 @@ const QUESTIONS = [
 		initGif: "source/t-3/q4.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q4-a0.gif",
+				gif: "source/t-3/q4-a0.gif",
 				text: "Разрешено только для посадки (высадки) пассажиров",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q4-a1.gif",
+				gif: "source/t-3/q4-a1.gif",
 				text: "Запрещено",
 				isCorrect: true
 			}
@@ -311,12 +311,12 @@ const QUESTIONS = [
 		initGif: "source/t-3/q4.gif",
 		answers: [
 			{
-				gif: "source/theme-2/q4-a0.gif",
+				gif: "source/t-3/q4-a0.gif",
 				text: "Разрешено только для посадки (высадки) пассажиров",
 				isCorrect: false
 			},
 			{
-				gif: "source/theme-2/q4-a1.gif",
+				gif: "source/t-3/q4-a1.gif",
 				text: "Запрещено",
 				isCorrect: true
 			}

@@ -1,5 +1,11 @@
 class Quick {
 	Close(type) {
+		if (this.testTimer) {
+			clearTimeout(this.testTimer); 
+		}
+		if (!this.isSaved) {
+			this.Save();
+		}
 		if (type === true) {
 			// remove answers buttons
 			$('.q-a').off().removeClass('active').removeClass('passed');
@@ -10,12 +16,19 @@ class Quick {
 				$('.clock').empty();
 			}
 		}
+		
+		$('.q-next span').off();
 		$('.progress').show();
 		$('.q-result').hide();
 		$('.q-content').show();
 		$('.q-progress-bar').css({'width' : '0%'});
 		$('.quick').removeClass('active');
 		$('.main-menu').addClass('active');
+	}
+	GetStar() {
+		if (this.score == this.qList.length) return 2;
+		if (this.score >= this.qList.length / 2) return 1;
+		return 0;
 	}
 	PrintStar() {
 		if (this.score == this.qList.length) $('.q-american-result').append('<div><i class="fas fa-star"></i></div>');
@@ -51,6 +64,10 @@ class Quick {
  			</div>');
  	}
 	End() {
+		if (!this.isSaved) {
+			this.isSaved = true;
+			this.Save();
+		}
 		// remove answers buttons
 		$('.q-a').off().removeClass('active').removeClass('passed');
 
@@ -89,7 +106,7 @@ class Quick {
 		$('#q-state-value-result').html(this.score);
 
 		// set Exit Button
-		$('.q-next span').html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')
+		$('.q-next span').off().html('Выйти в меню<i class="fas fa-long-arrow-alt-right"></i>')
 			.click(() => {this.Close(false)});
 	}
 	PrevQ() {
@@ -110,6 +127,26 @@ class Quick {
 		this.qList[this.currentQ].resultGif = gif;
 		if (this.qList[this.currentQ].answers[answer].isCorrect) this.score++;
 		$('.q-a').addClass('passed');
+	}
+	Save() {
+		if (USER) {
+			if (this.type) {
+				userStatistic.questions.total += this.qList.length;
+				userStatistic.questions.correct += this.score;
+				userStatistic.stars[this.theme] = this.GetStar();
+				if (this.GetStar() >= 1) userStatistic.passedTopics += 1;
+			} else {
+				userStatistic.questions.total += 20;
+				userStatistic.questions.correct += this.score;
+				userStatistic.tests.total += 1;
+				if (this.score >= 18) userStatistic.tests.passed += 1;
+				userStatistic.averages.correctAnswers = (userStatistic.averages.correctAnswers * (userStatistic.tests.total - 1) + this.score) / userStatistic.tests.total;
+				userStatistic.averages.time = (userStatistic.averages.time * (userStatistic.tests.total - 1) + this.quickClock.GetM(true) * 60 + this.quickClock.GetS(true)) / userStatistic.tests.total;
+			}
+			console.log(userStatistic);
+			new Profile(userStatistic);
+			_setUserStat(firebase.auth().currentUser.uid, userStatistic);
+		}
 	}
 	GenerateQList() {
 		this.qList = [];
@@ -176,6 +213,7 @@ class Quick {
 			this.type = true;
 			this.currentQ = 0;
 			this.score = 0;
+			this.theme = theme;
 			this.GenerateQListTheme(theme);
 			$('.q-prev').show();
 			this.__initQ();
@@ -185,7 +223,7 @@ class Quick {
 		this.quickClock = new Clock('.clock');
 		this.testTimer = setTimeout(() => {
 			this.End();
-		}, 5000);
+		}, 20 * 60 * 1000 + 1000);
 		this.GenerateQList();
 		this.currentQ = 0;
 		this.score = 0;

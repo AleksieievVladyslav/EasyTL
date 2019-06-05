@@ -79,7 +79,11 @@ $(document).ready(function(){
 	    //'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 	    return false;
 	});
-
+	$('.to-quick-test').click(function() {
+		$('.theory-topic').removeClass('active');
+		new Quick(true, CURRENT_TOPIC);
+		$('.quick').addClass('active');
+	})
 	$('.to-topics-list').click(function() {
 		$('.theory-topic').removeClass('active');
 		$('.theory').addClass('active');

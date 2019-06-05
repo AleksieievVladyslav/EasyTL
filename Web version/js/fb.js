@@ -1,11 +1,12 @@
 var NAME;
+var USER;
 $(document).ready(function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
+			USER = true;
 			var uid = user.uid;
-			userStatistic = _getUserStat(uid, NAME);
-
+			_getUserStat(uid, NAME);
 			$('#logout').off().click(function() {
 				firebase.auth().signOut().then(function() {
 				  $('.profile-state').removeClass('active');
@@ -43,6 +44,7 @@ $(document).ready(function() {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		console.log(1);
 		firebase.auth().signInWithPopup(provider).then(function(result) {
+			console.log(result.credential.accessToken);
 		  // The signed-in user info.
 		  var user = result.user;
 		}).catch(function(error) {
@@ -79,13 +81,14 @@ function _getUserStat(uid, name) {
 			res.tests = (snapshot.val().tests) ? snapshot.val().tests : { passed: 0, total: 0};
 			res.averages = (snapshot.val().averages) ? snapshot.val().averages : { correctAnswers: 0, time: 0};
 		} else {
-			res = $.extend(res, {stars: "0", passedTopics: 0, questions: { correct: 0, total: 0 }, tests: { passed: 0, total: 0 }, 
+			res = $.extend(res, {stars: [0,0,0,0,0,0], passedTopics: 0, questions: { correct: 0, total: 0 }, tests: { passed: 0, total: 0 }, 
 				averages: { correctAnswers: 0, time: 0} });
 		}
 		new Profile(res);
 		$('.profile-state').removeClass('active');
 		$('.logged').addClass('active');
 		_setUserStat(uid, res);
+		userStatistic = res;
 		return res;
 	});
 }

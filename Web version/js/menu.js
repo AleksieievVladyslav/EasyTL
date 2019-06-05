@@ -1,3 +1,4 @@
+var CURRENT_TOPIC;
 class Menu {
 	mainMenu = {
 		"#theory" : ".theory",
@@ -31,6 +32,7 @@ class Menu {
 			return;
 		}
 		let index = $(target).index();
+		CURRENT_TOPIC = index;
 		new Theory(index);
 		$('.theory').removeClass('active');
 		$('.theory-topic').addClass('active');

@@ -15,9 +15,12 @@ class Profile {
 	SetProgressTopics() {
 		let i;
 		for (i = 0; i < this.passedTopics; i++) {
-			$('.topic:eq(' + i + ')').removeClass('closed-topic').addClass('passed-topic');
+			$('.topic:eq(' + i + ')').removeClass('closed-topic').removeClass('opened-topic').addClass('passed-topic');
 		}
-		$('.topic:eq(' + i + ')').removeClass('closed-topic').addClass('opened-topic');
+		for (let j = this.passedTopics; j < THEORY.length; j++) {
+			$('.topic:eq(' + j + ')').removeClass('opened-topic').removeClass('passed-topic').addClass('closed-topic');
+		}
+		$('.topic:eq(' + i + ')').removeClass('closed-topic').removeClass('passed-topic').addClass('opened-topic');
 	}
 	InitFields() {
 		this.InitStars();
@@ -29,25 +32,27 @@ class Profile {
 		$('#totalanswers').html(this.questions.total);
 		$('#passedtests').html(this.tests.passed);
 		$('#totaltests').html(this.tests.total);
-		$('#averageanswers').html(this.averages.correctAnswers);
-		$('#averagetime').html(this.averages.time);
+		$('#averageanswers').html(this.averages.correctAnswers.toFixed(2));
+		$('#averagetime').html(this.averages.time.toFixed(2));
 	}
 	InitStars() {
-		let res = [0, 0, 0, 0, 0];
-		let i = 0;
-		let stars = this.stars;
-		while (stars > 1) {
-			stars -= 2;
-			res[i++] = 2;
+		let stars = [];
+		let res = 0;
+		for (let i = 0; i < this.stars.length; i++) {
+			res += this.stars[i];
 		}
-		if (stars == 1) {
-			res[i] = 1;
+		console.log(res);
+		while (res > 1) {
+			res -= 2;
+			stars.push(2);
 		}
+		stars.push(res);
+		console.log(this.stars);
 
 		let starsContainer = $('.profile .stars');
 		starsContainer.empty();
-		for (let j = 0; j < res.length; j++) {
-			switch (res[j]) {
+		for (let j = 0; j < this.stars.length; j++) {
+			switch (stars[j]) {
 				case 0:
 					starsContainer.append('<i class="far fa-star">');
 					break;
@@ -56,6 +61,9 @@ class Profile {
 					break;
 				case 2:
 					starsContainer.append('<i class="fas fa-star">');
+					break;
+				default:
+					starsContainer.append('<i class="far fa-star">');
 					break;
 			}
 		} 

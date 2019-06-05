@@ -41,13 +41,11 @@ class Profile {
 		for (let i = 0; i < this.stars.length; i++) {
 			res += this.stars[i];
 		}
-		console.log(res);
 		while (res > 1) {
 			res -= 2;
 			stars.push(2);
 		}
 		stars.push(res);
-		console.log(this.stars);
 
 		let starsContainer = $('.profile .stars');
 		starsContainer.empty();

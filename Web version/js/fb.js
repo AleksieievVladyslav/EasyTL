@@ -39,20 +39,36 @@ $(document).ready(function() {
 		  // ...
 		});
 	});
+	$('.login .sub_with_facebook').click(function(e) {
+		e.preventDefault();
+		var provider = new firebase.auth.FacebookAuthProvider();
+
+		firebase.auth().signInWithPopup(provider).then(function(result) {
+			
+		  // The signed-in user info.
+		  var user = result.user;
+		  NAME = user.displayName;
+		}).catch(function(error) {
+		  var errorMessage = error.message;
+		  alert('Error: ' + errorMessage);
+		});
+	})
 	$('.login .sub_with_google').click(function(e) {
 		e.preventDefault();
 		var provider = new firebase.auth.GoogleAuthProvider();
-		console.log(1);
 		firebase.auth().signInWithPopup(provider).then(function(result) {
-			console.log(result.credential.accessToken);
+			
 		  // The signed-in user info.
 		  var user = result.user;
+		  NAME = user.displayName;
 		}).catch(function(error) {
 		  var errorMessage = error.message;
 		  alert('Error: ' + errorMessage);
 		});
 	});
 });
+
+
 function _regUser(email, password) {
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 		var errorCode = error.code;

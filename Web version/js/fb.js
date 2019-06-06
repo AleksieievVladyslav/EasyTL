@@ -53,6 +53,31 @@ $(document).ready(function() {
 		  alert('Error: ' + errorMessage);
 		});
 	})
+	$('.registration .submit').click(function() {
+		var email = $('#email-login').val();
+		var password = $('#pass-login').val();
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  alert('Error:\n' + errorMessage);
+		  // ...
+		});
+	});
+	$('.registration .sub_with_facebook').click(function(e) {
+		e.preventDefault();
+		var provider = new firebase.auth.FacebookAuthProvider();
+
+		firebase.auth().signInWithPopup(provider).then(function(result) {
+			
+		  // The signed-in user info.
+		  var user = result.user;
+		  NAME = user.displayName;
+		}).catch(function(error) {
+		  var errorMessage = error.message;
+		  alert('Error: ' + errorMessage);
+		});
+	})
 	$('.login .sub_with_google').click(function(e) {
 		e.preventDefault();
 		var provider = new firebase.auth.GoogleAuthProvider();

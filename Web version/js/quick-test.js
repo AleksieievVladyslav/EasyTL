@@ -143,7 +143,6 @@ class Quick {
 				userStatistic.averages.correctAnswers = (userStatistic.averages.correctAnswers * (userStatistic.tests.total - 1) + this.score) / userStatistic.tests.total;
 				userStatistic.averages.time = (userStatistic.averages.time * (userStatistic.tests.total - 1) + this.quickClock.GetM(true) * 60 + this.quickClock.GetS(true)) / userStatistic.tests.total;
 			}
-			console.log(userStatistic);
 			new Profile(userStatistic);
 			_setUserStat(firebase.auth().currentUser.uid, userStatistic);
 		}
@@ -165,7 +164,6 @@ class Quick {
 				this.qList.push(new Question(QUESTIONS[j]));
 			}
 		}
-	    console.log(res);
 	}
 	GenerateQListTheme(theme) {
 		this.qList = [];

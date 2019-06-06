@@ -150,7 +150,22 @@ class Quick {
 	}
 	GenerateQList() {
 		this.qList = [];
-		for (let i = 0; i < 20; i++) this.qList.push(new Question(QUESTIONS[0]));
+		let res = [];
+		for (let i = 0; i < 20; i++) {
+			let j = Math.floor(Math.random() * QUESTIONS.length);
+			if (res.indexOf(j) == -1) {
+				res.push(j);
+				this.qList.push(new Question(QUESTIONS[j]));
+			} else {
+				while (res.indexOf(j) != -1) {
+					j++;
+					if (j == QUESTIONS.length) j = 0;
+				}
+				res.push(j);
+				this.qList.push(new Question(QUESTIONS[j]));
+			}
+		}
+	    console.log(res);
 	}
 	GenerateQListTheme(theme) {
 		this.qList = [];

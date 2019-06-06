@@ -262,7 +262,7 @@ const QUESTIONS = [
 				isCorrect: false
 			},
 			{
-				gif: "source/t-3/q1-a1.gif",
+				gif: "source/t-3/q2-a1.gif",
 				text: "На месте А",
 				isCorrect: true
 			}
